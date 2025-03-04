@@ -16,7 +16,7 @@ class ImageCycler(QWidget):
         super().__init__()
 
         self.image_index = 0
-        self.images = self.load_images_from_directory("images")
+        self.images = self.load_images_from_directory("images/frames")
         self.setContentsMargins(96,96,96,96)
 
         self.layout = QVBoxLayout(self)
@@ -175,10 +175,10 @@ class ImageCycler(QWidget):
 
     def get_thresholds(self):
         return {
-            'ID_MSE_Threshold': 85,
-            'ED_IOU_Threshold': 70,
-            'DWT_SSIM_Threshold': 70,
-            'CWT_SSIM_Threshold': 90,
+            'ID_MSE_Threshold': 95,
+            'ED_IOU_Threshold': 10,
+            'DWT_SSIM_Threshold': 20,
+            'CWT_SSIM_Threshold': 70,
         }
 
     def update_table(self, similarities, thresholds):

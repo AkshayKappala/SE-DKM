@@ -4,12 +4,16 @@ from dwt_minimal import dwt2d, idwt2d
 from utils_minimal import aes_encrypt, aes_decrypt, sha256_with_key, sha512_with_key, xor_with_sha_key
 import time
 
+encryption_times = []  # Store encryption times here
+
 def time_it(func):
     def wrapper(*args, **kwargs):
         start_time = time.perf_counter()
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
-        print(f"Time taken to {func.__name__}: {(end_time - start_time)*1000:.4f} ms")
+        execution_time = (end_time - start_time)*1000
+        print(f"Time taken to {func.__name__}: {execution_time:.4f} ms")
+        encryption_times.append(execution_time)  # Append execution time
         return result
     return wrapper
 
